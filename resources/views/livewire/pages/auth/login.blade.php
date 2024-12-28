@@ -77,6 +77,7 @@ new #[Layout('layouts.guest')] class extends Component
                 Войти
             </x-primary-button>
         </div>
+        
     </form>
 
 </div>
