@@ -62,11 +62,27 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
 
           script: |
-            /usr/local/php/cgi/8.2/bin/php composer.phar i
-            npm i && npm run build
+            /usr/local/php/cgi/8.2/bin/php composer.phar i --no-dev
+            php artisan migrate
           #            cd ${{ env.DIR }}
-          #            make prod
           #            /usr/local/php/cgi/8.2/bin/php composer.phar i --no-dev
+
+
+  deploy_npm:
+    runs-on: ubuntu-latest
+    #    needs: deploy_composer_stop
+    needs: deploy
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+
+          host: ${{ env.VPS_IP }}
+          username: ${{ env.VPS_USERNAME }}
+          key: ${{ secrets.DEPLOY_KEY }}
+
+          script: |
+            npm i
+            npm run build
 
   sms_start:
     runs-on: ubuntu-latest
