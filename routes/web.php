@@ -45,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', \App\Livewire\Cms2\Contracts::class)->name('index');
         Route::get('/template', \App\Livewire\Cms2\ContractsTemplate::class)->name('template');
     });
+
+//
+    Route::get('/u-list', \App\Livewire\Cms2\UserList::class)->name('user_list');
 });
 
 require __DIR__ . '/auth.php';

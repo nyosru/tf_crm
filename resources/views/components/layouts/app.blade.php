@@ -45,7 +45,8 @@
     {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"--}}
     {{--          integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">--}}
 
-    <title>{{ $title ?? 'Marudi' }}</title>
+{{--    <title>{{ $title ?? 'Marudi' }}</title>--}}
+    <title>{{ $title ?? 'M' }}</title>
     <link href="/css/output.css?r{{ rand() }}" rel="stylesheet">
 </head>
 
