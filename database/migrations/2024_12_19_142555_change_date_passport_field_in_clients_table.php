@@ -108,4 +108,4 @@ return new class extends Migration
                 ->where('date_passport', '=', '0000-00-00')
                 ->count() > 0;
     }
-}
+};
