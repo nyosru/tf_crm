@@ -2,7 +2,8 @@ name: Deploy to cms2dev
 
 
 env:
-  VPS_IP: sachathw.beget.tech
+  #  VPS_IP: sachathw.beget.tech
+  VPS_IP: 5.101.152.170
   VPS_USERNAME: sachathw_cms2dev2
   DIR: /
   GIT_BRANCH: origin/main
@@ -28,29 +29,29 @@ jobs:
           username: ${{ env.VPS_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-#            cd ${{ env.DIR }}
-            git fetch --all
-            git reset --hard ${{ env.GIT_BRANCH }}
+                    git fetch --all
+                    git reset --hard ${{ env.GIT_BRANCH }}
+          #            cd ${{ env.DIR }}
 
-#  deploy_composer_stop:
-#    runs-on: ubuntu-latest
-#    needs: deploy
-#    steps:
-#      - uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ env.VPS_IP }}
-#          username: ${{ env.VPS_USERNAME }}
-#          key: ${{ secrets.DEPLOY_KEY_DOCKER24 }}
-#          script: |
-#            cd ${{ env.DIR }}
-#            docker-compose down --remove-orphans
+  #  deploy_composer_stop:
+  #    runs-on: ubuntu-latest
+  #    needs: deploy
+  #    steps:
+  #      - uses: appleboy/ssh-action@master
+  #        with:
+  #          host: ${{ env.VPS_IP }}
+  #          username: ${{ env.VPS_USERNAME }}
+  #          key: ${{ secrets.DEPLOY_KEY_DOCKER24 }}
+  #          script: |
+  #            cd ${{ env.DIR }}
+  #            docker-compose down --remove-orphans
 
 
 
 
   deploy_composer:
     runs-on: ubuntu-latest
-#    needs: deploy_composer_stop
+    #    needs: deploy_composer_stop
     needs: deploy
     steps:
       - uses: appleboy/ssh-action@master
@@ -61,11 +62,11 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
 
           script: |
-#            cd ${{ env.DIR }}
-#            make prod
-#            /usr/local/php/cgi/8.2/bin/php composer.phar i --no-dev
             /usr/local/php/cgi/8.2/bin/php composer.phar i
             npm i && npm run build
+          #            cd ${{ env.DIR }}
+          #            make prod
+          #            /usr/local/php/cgi/8.2/bin/php composer.phar i --no-dev
 
   sms_start:
     runs-on: ubuntu-latest
