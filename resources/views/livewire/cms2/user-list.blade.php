@@ -1,7 +1,5 @@
 <div>
 
-    привет буфет
-
 {{--    <pre style="max-height: 100px; font-size: 10px; overflow: auto;">{{ print_r($users->toArray()) }}</pre>--}}
     <table class="table-auto">
         <thead>
