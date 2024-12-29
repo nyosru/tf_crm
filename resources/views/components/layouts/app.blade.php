@@ -53,7 +53,11 @@
 <body
     {{--    class="layout-fixed sidebar-expand-lg bg-body-tertiary"--}}
 >
+
+<div class="bg-red-300 p-1" >
 {{ filemtime(public_path('/css/output.css')) }}
+</div>
+
 <div class="flex min-h-screen ... relative">
 
     {{--    левый блок--}}
