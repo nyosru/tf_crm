@@ -47,13 +47,13 @@
 
 {{--    <title>{{ $title ?? 'Marudi' }}</title>--}}
     <title>{{ $title ?? 'M' }}</title>
-    <link href="/css/output.css?r{{ rand() }}" rel="stylesheet">
+    <link href="/css/output.css?r={{ filemtime(public_path('/css/output.css')) }}" rel="stylesheet">
 </head>
 
 <body
     {{--    class="layout-fixed sidebar-expand-lg bg-body-tertiary"--}}
 >
-
+{{ filemtime(public_path('/css/output.css')) }}
 <div class="flex min-h-screen ... relative">
 
     {{--    левый блок--}}
